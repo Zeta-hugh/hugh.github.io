@@ -1,0 +1,16 @@
+{% extends "global/Page.html" %}
+{% load otree %}
+
+{% block title %}请等待{% endblock %}
+
+{% block content %}
+
+请坐好并用举手表示你已到达这个阶段。
+
+<br> 
+
+在实验者要求您这样做之前，请不要按“next”。
+
+{% next_button %}
+
+{% endblock %}

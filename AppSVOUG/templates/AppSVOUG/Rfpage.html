@@ -1,0 +1,126 @@
+{% extends "global/Page.html" %}
+{% load otree %}
+{% block title %}感受{% endblock %}
+
+{% block content %}
+<br><br><strong>您需要了解以下信息：</strong><br>
+【您的信息】您的SVO的得分是：<strong style = 'font-size:20px'>{{svo_slider_angle}}</strong>，您属于：<strong style = 'font-size:20px'>{{slider_classification}}</strong>人群。
+<br>
+【玩家A信息】<strong>本次玩家A</strong>的SVO得分为：<strong style = 'font-size:20px'>{{fake_svo_angle}}</strong>，玩家A属于：
+{% if fake_svo_angle >= 57.15 %}
+<strong style = 'font-size:20px'>利他者</strong>
+{% elif fake_svo_angle >= 22.45 %}
+<strong style = 'font-size:20px'>亲社会者</strong>
+{% elif fake_svo_angle >= -12.04 %}
+<strong style = 'font-size:20px'>自私者</strong>
+{%else%}
+<strong style = 'font-size:20px'>竞争者</strong>
+{%endif%}
+人群。
+<br><br><hr>
+本轮玩家A与你共同分享 <strong>{{Constants.endowment}}</strong>个点数。本轮玩家A决定分享给您 <strong style = 'font-size:20px'>{{shared_point}}</strong>点,
+其余<strong style = 'font-size:20px'>{{individual_share_a}}</strong>点自己持有。
+<p style = 'font-size:20px'><b>玩家A的分配方案让您产生了何种体验？</b></p>
+<html>
+<body>
+<hr>
+<table style="height:100px;position:relative;left:150px;border-left-style: solid;border-width: 0px" border = '0'>
+    <tr>
+        <td>
+            <ul><p style="font-family:Arial;font-size: 12px;line-height: 24px"><br><strong>负性强度</strong><br>&emsp;&emsp;&emsp;很强<br>&emsp;&emsp;&emsp;较强<br>&emsp;&emsp;&emsp;中等<br>&emsp;&emsp;&emsp;有些<br>&emsp;&emsp;&emsp;稍微<br>&emsp;&emsp;&emsp;无感</p>
+            </ul>
+        </td>
+        <td>
+<span style="padding-left:0px;padding-top:15px;position: absolute">^<br><br></span>
+<div>
+<br>
+    <table style="height:100px;border-color: black;position:relative;left:5px;border-left-style: solid;border-width: 1px"><tr><td valign="top">
+    <button name = 'feeling_rating' value="05" class="btn btn-primary btn-large"></button>
+    <button name = 'feeling_rating' value="15" class="btn btn-primary btn-large"></button>
+    <button name = 'feeling_rating' value="25" class="btn btn-primary btn-large"></button>
+    <button name = 'feeling_rating' value="35" class="btn btn-primary btn-large" ></button>
+    <button name = 'feeling_rating' value="45" class="btn btn-primary btn-large" ></button>
+    <button name = 'feeling_rating' value="55" class="btn btn-primary btn-large"></button>
+</div>
+<div>
+    <button name = 'feeling_rating' value="04" class="btn btn-primary btn-large" ></button>
+    <button name = 'feeling_rating' value="14" class="btn btn-primary btn-large" ></button>
+    <button name = 'feeling_rating' value="24" class="btn btn-primary btn-large" ></button>
+    <button name = 'feeling_rating' value="34" class="btn btn-primary btn-large" ></button>
+    <button name = 'feeling_rating' value="44" class="btn btn-primary btn-large" ></button>
+    <button name = 'feeling_rating' value="54" class="btn btn-primary btn-large" ></button>
+</div>
+<div>
+   <button name = 'feeling_rating' value="03" class="btn btn-primary btn-large" ></button>
+    <button name = 'feeling_rating' value="13" class="btn btn-primary btn-large" ></button>
+    <button name = 'feeling_rating' value="23" class="btn btn-primary btn-large" ></button>
+    <button name = 'feeling_rating' value="33" class="btn btn-primary btn-large" ></button>
+    <button name = 'feeling_rating' value="43" class="btn btn-primary btn-large" ></button>
+    <button name = 'feeling_rating' value="53" class="btn btn-primary btn-large" ></button>
+</div>
+<div>
+    <button name = 'feeling_rating' value="02" class="btn btn-primary btn-large" ></button>
+    <button name = 'feeling_rating' value="12" class="btn btn-primary btn-large" ></button>
+    <button name = 'feeling_rating' value="22" class="btn btn-primary btn-large" ></button>
+    <button name = 'feeling_rating' value="32" class="btn btn-primary btn-large" ></button>
+    <button name = 'feeling_rating' value="42" class="btn btn-primary btn-large" ></button>
+    <button name = 'feeling_rating' value="52" class="btn btn-primary btn-large" ></button>
+</div>
+<div>
+    <button name = 'feeling_rating' value="01" class="btn btn-primary btn-large" ></button>
+    <button name = 'feeling_rating' value="11" class="btn btn-primary btn-large" ></button>
+    <button name = 'feeling_rating' value="21" class="btn btn-primary btn-large" ></button>
+    <button name = 'feeling_rating' value="31" class="btn btn-primary btn-large" ></button>
+    <button name = 'feeling_rating' value="41" class="btn btn-primary btn-large" ></button>
+    <button name = 'feeling_rating' value="51" class="btn btn-primary btn-large" ></button>
+</div>
+<div>
+    <button name = 'feeling_rating' value="00" class="btn btn-primary btn-large" ></button>
+    <button name = 'feeling_rating' value="10" class="btn btn-primary btn-large" ></button>
+    <button name = 'feeling_rating' value="20" class="btn btn-primary btn-large" ></button>
+    <button name = 'feeling_rating' value="30" class="btn btn-primary btn-large" ></button>
+    <button name = 'feeling_rating' value="40" class="btn btn-primary btn-large" ></button>
+    <button name = 'feeling_rating' value="50" class="btn btn-primary btn-large" ></button><span style="padding-left:13.7px;padding-top:13.7px;position: absolute">&gt<br></span>
+    </td></tr></table>
+
+    <table style="width:200px;border-color: black;position:relative;left:5px;border-bottom-style: solid;border-width: 1px"><tr><td valign="top"> </td></tr></table>
+</div>
+
+        </td>
+    </tr>
+    <tr>
+        <td>
+        </td>
+        <td>
+            <p style="font-family:Arial;font-size: 12px;left:0px;line-height:0px">&nbsp;&nbsp;&nbsp;无感&nbsp;&nbsp;稍微&nbsp;&nbsp;有些&nbsp;&nbsp;中等&nbsp;&nbsp;较强&nbsp;&nbsp;很强&nbsp;<strong>正性强度</strong></p>
+            </td>
+    </tr>
+</table>
+</body>
+</html>
+<ul>向上表示态度的负性维度的强度增加。
+向右表示态度的正性维度的强度增加。
+</ul><br>
+<ul><strong>评价方法：</strong>下方坐标轴中的每一个蓝色按钮分别表示一种程度的正性、负性情绪的强度组合。<br>请以您本次网络实验中您情绪的相对强度变化范围为参考,点击某一蓝色按钮完成对自身情绪的评价。<br>
+</ul>
+
+<br>
+<hr>
+<br>
+        <strong>游戏流程：</strong><br>
+        <strong>玩家A流程</strong>：<br>第一步，提出分配方案；将100个实验点数分配给<strong>自己</strong>和玩家B。<br>
+              第二步，等待玩家B的意见。<br>
+               第三步，若玩家B接受分配方案，则两人获得玩家A方案中的实验点数。<br>
+        若玩家B不接受，那么两人均无所获（各自获得<strong>零</strong>实验点数）,<br><br>
+        <strong>玩家B流程</strong>：<br>第一步，得到玩家A给出的方案。<br>
+               第二步，决定接受或拒绝玩家A提出的方案。<br>
+               第三步，若玩家B接受分配方案，则两人获得玩家A方案中的实验点数,<br>
+        若玩家B不接受，那么两人均无所获（各自获得<strong>零</strong>实验点数）。<br>
+    <br>
+        <strong>注意：每轮与您进行游戏的玩家均不同。</strong><br>
+<strong>竞争者（Competitive）: <=-12.04 <br>
+自私者(Individulistic): -12.04~22.45<br>
+亲社者(Prosocial): 22.45~57.15<br>
+利他者(Altruism): >=57.15</strong>
+<br>
+{% endblock %}

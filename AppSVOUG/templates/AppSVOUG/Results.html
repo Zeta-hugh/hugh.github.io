@@ -1,0 +1,53 @@
+{% extends "global/Page.html" %}
+{% load otree %}
+
+{% block title %}第三步{% endblock %}
+
+{% block content %}
+<br><br><strong>您需要了解以下信息：</strong><br>
+【您的信息】您的SVO的得分是：<strong style = 'font-size:20px'>{{svo_slider_angle}}</strong>，您属于：<strong style = 'font-size:20px'>{{slider_classification}}</strong>人群。
+<br>
+【玩家A信息】<strong>本次玩家A</strong>的SVO得分为：<strong style = 'font-size:20px'>{{fake_svo_angle}}</strong>，玩家A属于：
+{% if fake_svo_angle >= 57.15 %}
+<strong style = 'font-size:20px'>利他者</strong>
+{% elif fake_svo_angle >= 22.45 %}
+<strong style = 'font-size:20px'>亲社会者</strong>
+{% elif fake_svo_angle >= -12.04 %}
+<strong style = 'font-size:20px'>自私者</strong>
+{%else%}
+<strong style = 'font-size:20px'>竞争者</strong>
+{%endif%}
+人群。
+<br><br><hr>
+
+玩家A从总共{{Constants.endowment}} 实验点数中，分配 <strong>{{shared_point}}</strong>实验点数给你，其余<strong style = 'font-size:20px'>{{individual_share_a}} </strong>点数分配给自己。<br><br>
+您
+{% if player.offer_accept == True%}
+<strong><p style = 'font-size:28px; color:red'>接受</strong></p>了此分配。因此，您本轮的收益为 <strong style = 'font-size:20px'>{{shared_point}}</strong>点。
+
+{% else %}
+您<p style = 'font-size:28px; color:blue'><strong>拒绝</strong></p>了此次分配。 因此，您本轮的收益为<strong style = 'font-size:20px'>0</strong>点。
+{% endif %}
+
+<br>
+<br>
+{% next_button %}
+<hr>
+<br>
+        <strong>游戏流程：</strong><br>
+        <strong>玩家A流程</strong>：<br>第一步，提出分配方案；将100个实验点数分配给<strong>自己</strong>和玩家B。<br>
+              第二步，等待玩家B的意见。<br>
+               第三步，若玩家B接受分配方案，则两人获得玩家A方案中的实验点数。<br>
+        若玩家B不接受，那么两人均无所获（各自获得<strong>零</strong>实验点数）,<br><br>
+        <strong>玩家B流程</strong>：<br>第一步，得到玩家A给出的方案。<br>
+               第二步，决定接受或拒绝玩家A提出的方案。<br>
+               第三步，若玩家B接受分配方案，则两人获得玩家A方案中的实验点数,<br>
+        若玩家B不接受，那么两人均无所获（各自获得<strong>零</strong>实验点数）。<br>
+    <br>
+        <strong>注意：每轮与您进行游戏的玩家均不同。</strong><br>
+<strong>竞争者（Competitive）: <=-12.04 <br>
+自私者(Individulistic): -12.04~22.45<br>
+亲社者(Prosocial): 22.45~57.15<br>
+利他者(Altruism): >=57.15</strong>
+<br>
+{% endblock %}

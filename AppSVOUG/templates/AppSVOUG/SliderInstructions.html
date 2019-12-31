@@ -1,0 +1,66 @@
+{% load otree_tags staticfiles %}
+
+<div class="instructions well well-lg">
+
+    <div>
+        <p>
+            在这项任务中我们请您想象，您被随机与<strong>陌生人</strong>配对，而且这个人是您现在不认识将来也不会遇到的人。您可以在很多选项中进行选择，
+            您的选择决定自己和陌生人得到的金额。
+            对以下每个问题，请点击评价轴，找到您想要的分配方案。
+            请注意：每个问题在确认后均无法修改。<br>
+        </p>
+    </div>
+<hr>
+    <div>
+        <p>
+            以下是某人选择分配金钱的一个示例，在示例中<strong>她/他获得50点的报酬，同时陌生人获得40点的报酬</strong>。
+        </p>
+    </div>
+
+    <div>
+        <p>
+            您的选择无对与错之分，仅仅反映了个人偏好。在您作出决定后，请通过<strong>点击评价轴右侧的确认按钮</strong>确定您的选择。
+            如您所见，您的选择将影响您获得的金钱数量以及陌生人获得的金钱数量。当你作出所有决定后，<strong>点击屏幕下方的继续按钮 </strong> 结束本实验。
+        </p>
+    </div>
+
+        <div class="panel-body" style="margin-top: 2em; margin-bottom: 2em; border: 1px solid #ddd">
+       <div class="row"">
+           <div class="col-sm-2" align="center"><strong>示例</strong></div>
+           <div class="col-sm-1"></div>
+           <div class="col-sm-7"></div>
+           <div class="col-sm-2"></div>
+       </div>
+       <div class="row">
+           <div class="col-sm-2" align="center">你得到</div>
+           <div class="col-sm-1" align="center"><span class="slider-value">50</span></div>
+           <div class="col-sm-7"><div class="slider-reference"><div class="value-start">30</div><div class="value-end">70</div></div></div>
+           <div class="col-sm-2"></div>
+       </div>
+       <div class="row">
+           <div class="col-sm-2" align="center"></div>
+           <div class="col-sm-1" align="center"></div>
+            {% if type == "discrete" %}
+           <div class="col-sm-7 slider-horizontal-col"><input id="example" type="text" data-slider-tooltip="hide" data-slider-min="1" data-slider-max="9" data-slider-step="1" data-slider-ticks="[1, 2, 3, 4, 5, 6, 7, 8, 9]" data-slider-value=5 data-slider-enabled="false" /></div>
+            {% elif type == "continuous" %}
+            <div class="col-sm-7 slider-horizontal-col">
+                <input id="example" type="text" data-slider-tooltip="hide" data-slider-min="0" data-slider-max="100" data-slider-step="0.1" data-slider-value=50 data-slider-enabled="false"/>
+            </div>
+            {% endif %}
+           <div class="col-sm-2"><button type="button" class="btn btn-primary btn-large" disabled="True">确认</button></div>
+       </div>
+       <div class="row">
+           <div class="col-sm-2" align="center">陌生人得到</div>
+           <div class="col-sm-1" align="center"><span class="slider-value"">40</span></div>
+           <div class="col-sm-7"><div class="slider-reference"><div class="value-start">80</div><div class="value-end">0</div></div></div>
+           <div class="col-sm-2"></div>
+        </div>
+    </div>
+</div>
+<hr>
+{% block scripts %}
+    <script src="https://cdnjs.cloudflare.com/ajax/libs/bootstrap-slider/9.5.3/bootstrap-slider.min.js"></script>
+    <script>
+    $("#example").slider({});
+    </script>
+{% endblock %}
